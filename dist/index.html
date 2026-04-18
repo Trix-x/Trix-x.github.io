@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NWB Online</title>
+  <script type="module" crossorigin src="/assets/index-Cr5sz2Ly.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-rUfFhOt4.css">
+</head>
+<body>
+
+  <!-- ── Landing screen ───────────────────────────────────────────────── -->
+  <div id="landing" class="landing">
+    <div class="landing-card">
+      <h1 class="logo-text">⚔ NWB Online</h1>
+      <p class="landing-sub">NovaWorldBuffs viewer — no install, no server, no upload.</p>
+
+      <div id="pick-zone" class="pick-zone">
+        <!-- Chromium: FSA dir picker (shown/hidden by JS) -->
+        <button id="btn-pick-dir" class="btn-primary hidden">
+          📂 Pick WTF Folder
+        </button>
+
+        <div id="dnd-zone" class="dnd-zone hidden">
+          <span>Drop your <code>WTF</code> folder here</span>
+        </div>
+
+        <div class="or-divider"><span>or</span></div>
+
+        <label class="btn-secondary file-label">
+          Pick a single <code>NovaWorldBuffs.lua</code>
+          <input type="file" id="file-input" accept=".lua" class="visually-hidden" />
+        </label>
+      </div>
+
+      <p id="browser-hint" class="browser-hint"></p>
+    </div>
+  </div>
+
+  <!-- ── App (hidden until data is loaded) ────────────────────────────── -->
+  <div id="app" class="app hidden">
+
+    <!-- Header / status bar -->
+    <header class="header">
+      <span class="header-logo">⚔ NWB Online</span>
+      <div class="status-bar" id="status-bar">
+        <span id="status-checked" class="status-item" title="Last poll time">—</span>
+        <span class="status-sep">·</span>
+        <span id="status-changed" class="status-item" title="Last file change">—</span>
+        <span class="status-sep">·</span>
+        <label class="status-item" title="Poll interval">
+          Auto-refresh:
+          <select id="poll-select" class="poll-select">
+            <option value="5">5s</option>
+            <option value="10" selected>10s</option>
+            <option value="30">30s</option>
+            <option value="60">1m</option>
+            <option value="0">Off</option>
+          </select>
+        </label>
+        <button id="btn-reload" class="btn-icon" title="Reload now">↺</button>
+        <button id="btn-repick" class="btn-icon" title="Change folder">⚙</button>
+      </div>
+    </header>
+
+    <!-- Tab bar -->
+    <nav class="tab-bar">
+      <button class="tab active" data-tab="characters">Characters</button>
+      <button class="tab" data-tab="timers">Server Timers</button>
+      <button class="tab" data-tab="explorer">Explorer</button>
+    </nav>
+
+    <!-- Error banner (hidden normally) -->
+    <div id="error-banner" class="error-banner hidden"></div>
+
+    <!-- Tab panels -->
+    <main class="content">
+      <div id="panel-characters" class="panel active"></div>
+      <div id="panel-timers"     class="panel hidden"></div>
+      <div id="panel-explorer"   class="panel hidden"></div>
+    </main>
+
+  </div>
+
+</body>
+</html>
